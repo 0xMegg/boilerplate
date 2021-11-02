@@ -34,7 +34,7 @@ app.post('/register', (req, res) => {
   })
 })
 
-app.post('login', (req, res) => {
+app.post('/login', (req, res) => {
 
   //요청된 이메일 유효성 검사
   User.findOne({ email: req.body.email }, (err, user) => {
