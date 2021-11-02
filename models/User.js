@@ -45,8 +45,8 @@ userSchema.pre('save', function( next ){
                 if(err) return next(err)
                 user.password = hash
                 next()
-            });
-        });
+            })
+        })
     } else {
         next()
     }
@@ -56,8 +56,8 @@ userSchema.methods.comparePassword = function(plainPassword, cb) {
 
     //plainPassword qwer1234    암호화된 비밀번호 $2b$10$cdGeicXLFQ0.JLst3xTopukiNjV89VMmUv3Y4ClJA84jkV6GK7p0G
     bcrypt.compare(plainPassword, this.password, function(err, isMatch){
-        if(err) return cb(err),
-            cb(null, isMatch)
+        if(err) return cb(err);
+        cb(null, isMatch)
     })
 }
 
@@ -69,7 +69,7 @@ userSchema.methods.generateToken = function(cb) {
 
     user.token = token
     user.save(function(err, user){
-        if(err) return cb(err)
+        if(err) return cb(err);
         cb(null, user)
 
     })
