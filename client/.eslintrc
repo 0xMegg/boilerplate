@@ -1,0 +1,72 @@
+{
+    "extends": [
+      "airbnb",
+      "airbnb/hooks",
+      "plugin:react/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "plugins": ["react", "import"],
+    "env": {
+      "browser": true,
+      "jasmine": true,
+      "jest": true
+    },
+    "settings": {
+      "import/extensions": [".js", ".jsx"],
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx"]
+        }
+      },
+      "react": {
+        "pragma": "React",
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "react/jsx-one-expression-per-line": "off",
+      "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+      "react/jsx-indent": "warn",
+      "react/jsx-props-no-spreading": "off",
+      "react/no-array-index-key": "warn",
+      "react/no-unescaped-entities": "off",
+      "react/require-default-props": "off",
+      "react/jsx-wrap-multilines": "off",
+      "import/prefer-default-export": "off",
+      "import/no-unresolved": "off",
+      "import/order": "off",
+  
+      "max-len": ["warn", { "code": 120 }],
+      "no-irregular-whitespace": "off",
+      "no-param-reassign": ["error", { "props": false }],
+      "no-use-before-define": "off",
+  
+      "no-shadow": "off",
+      "no-unused-expressions": ["warn"],
+      "no-unused-vars": ["warn"],
+      "object-curly-newline": "off",
+      "prefer-const": ["warn"],
+      "prefer-destructuring": ["error", { "object": true, "array": false }],
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/label-has-associated-control": [
+        "error",
+        {
+          "labelComponents": ["label"],
+          "labelAttributes": ["htmlFor"],
+          "controlComponents": ["input"]
+        }
+      ],
+      "jsx-quotes": ["error", "prefer-single"],
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ]
+    }
+  }
