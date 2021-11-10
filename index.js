@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.get('/api/hello', (req, res) => {
+  res.send("Hi")
+})
+
 app.post('/api/users/register', (req, res) => {
   //유저 정보를 client에서 가져와서 데이터베이스에 넣어준다
   const user = new User(req.body)
