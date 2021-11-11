@@ -17,6 +17,20 @@ import Reducer from './_reducers';
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
+// code of mine
+
+// ReactDOM.render(
+//   <Provider
+//     store={createStoreWithMiddleware(Reducer,
+//       // eslint-disable-next-line no-underscore-dangle
+//       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}
+//   >
+//     <App />
+//   </Provider>,
+//   document.getElementById('root'),
+// );
+
+// copy from git
 ReactDOM.render(
   <Provider
     store={createStoreWithMiddleware(Reducer,

@@ -4,11 +4,19 @@ import axios from 'axios';
 function LandingPage() {
   useEffect(() => {
     axios.get('/api/hello')
+      // eslint-disable-next-line no-console
       .then((response) => console.log(response.data));
   }, []);
   return (
-    <div>
-      LandingPage
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      height: '100vh',
+    }}
+    >
+      <h2>Starting Page</h2>
     </div>
   );
 }
