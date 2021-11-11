@@ -6,7 +6,7 @@ import { loginUser } from '../../../_actions/user_action';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-function LoginPage(props) {
+function LoginPage() {
   const dispatch = useDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
@@ -21,6 +21,7 @@ function LoginPage(props) {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
+    // eslint-disable-next-line prefer-const
     let body = {
       email: Email,
       password: Password,
@@ -31,6 +32,7 @@ function LoginPage(props) {
         if (response.payload.loginSuccess) {
           navigate(-1);
         } else {
+          // eslint-disable-next-line no-alert
           alert('Error');
         }
       });
