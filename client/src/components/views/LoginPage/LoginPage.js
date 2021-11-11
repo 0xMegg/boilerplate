@@ -1,11 +1,16 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable arrow-parens */
 import React, { useState } from 'react';
 import { loginUser } from '../../../_actions/user_action';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function LoginPage() {
+function LoginPage(props) {
   const dispatch = useDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
@@ -21,7 +26,14 @@ function LoginPage() {
       password: Password,
     };
 
-    dispatch(loginUser(body));
+    dispatch(loginUser(body))
+      .then(response => {
+        if (response.payload.loginSuccess) {
+          navigate(-1);
+        } else {
+          alert('Error');
+        }
+      });
   };
 
   return (
