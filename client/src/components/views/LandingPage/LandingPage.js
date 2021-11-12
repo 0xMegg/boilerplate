@@ -7,6 +7,13 @@ function LandingPage() {
       // eslint-disable-next-line no-console
       .then((response) => console.log(response.data));
   }, []);
+
+  const onClickHandler = () => {
+    axios.get('/api/users/logout')
+    // eslint-disable-next-line no-console
+      .then((response) => { console.log(response.data); });
+  };
+
   return (
     <div style={{
       display: 'flex',
@@ -17,6 +24,8 @@ function LandingPage() {
     }}
     >
       <h2>Starting Page</h2>
+      {/* eslint-disable-next-line react/button-has-type */}
+      <button onClick={onClickHandler}>Logout</button>
     </div>
   );
 }
