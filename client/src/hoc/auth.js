@@ -1,17 +1,68 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-lonely-if */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+// /* eslint-disable react/prop-types */
+// /* eslint-disable react/destructuring-assignment */
+// import React, { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { auth } from '../_actions/user_action';
+
+// // eslint-disable-next-line func-names
+// export default function (SpecificComponent, option, adminRoute = null) {
+//   function AuthenticationCheck(props) {
+//     const dispatch = useDispatch();
+//     useEffect(() => {
+//       dispatch(auth()).then((response) => {
+//         if (!response.payload.isAuth) {
+//           if (option) {
+//             props.history.push('/login');
+//           }
+//         } else if (adminRoute && !response.payload.isAdmin) {
+//           props.history.pusy('/');
+//         } else if (option === false) {
+//           props.history.push('/');
+//         }
+//       });
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//     }, []);
+
+//     return (<SpecificComponent />);
+//   }
+//   return AuthenticationCheck;
+// }
+
 import React, { useEffect } from 'react';
-import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { auth } from '../_actions/user_action';
 
 export default function (SpecificComponent, option, adminRoute = null) {
+  // null    =>  아무나 출입이 가능한 페이지
+  // true    =>  로그인한 유저만 출입이 가능한 페이지
+  // false   =>  로그인한 유저는 출입 불가능한 페이지
   function AuthenticationCheck(props) {
     const dispatch = useDispatch();
+
     useEffect(() => {
-      dispatch(auth());
-      Axios.get('/api/users/auth').then(response => {
-        
-      })
+      dispatch(auth()).then((response) => {
+        console.log(response);
+        // 로그인 하지 않은 상태
+        if (!response.payload.isAuth) {
+          if (option) {
+            props.history.push('/login');
+          }
+        } else {
+          // 로그인 한 상태
+          if (adminRoute && !response.payload.isAdmin) {
+            props.history.push('/');
+          } else if (option === false) props.history.push('/');
+        }
+      });
     }, []);
+
+    return (
+      <SpecificComponent />
+    );
   }
   return AuthenticationCheck;
 }
